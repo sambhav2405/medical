@@ -12,29 +12,47 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background: var(--bg); color: var(--text); height: 100vh; display: flex; justify-content: center; overflow: hidden; }
+        
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            overflow: hidden; 
+        }
 
         /* --- LANDING PAGE --- */
         #landing-page {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             width: 100%; text-align: center; animation: fadeIn 0.8s ease; padding: 20px;
+            overflow-y: auto;
         }
 
         .welcome-text h1 { 
-            font-size: 3.5rem; font-weight: 800; margin-bottom: 15px;
+            font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 800; margin-bottom: 15px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .team-badge { font-size: 14px; color: var(--accent); margin-bottom: 30px; letter-spacing: 2px; border: 1px solid var(--accent); padding: 5px 15px; border-radius: 20px; }
-        .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px; width: 100%; }
+        .team-badge { font-size: 12px; color: var(--accent); margin-bottom: 30px; letter-spacing: 2px; border: 1px solid var(--accent); padding: 5px 15px; border-radius: 20px; }
+
+        .options-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; 
+            max-width: 900px; 
+            width: 100%; 
+            padding-bottom: 20px;
+        }
 
         .option-card {
             background: var(--card-bg); padding: 30px; border-radius: 25px;
             border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: 0.4s;
             backdrop-filter: blur(10px);
         }
-        .option-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0, 242, 254, 0.15); }
+
+        .option-card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
         /* --- CHAT INTERFACE --- */
         #chat-interface {
@@ -43,31 +61,39 @@
         }
 
         .chat-header {
-            padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
             display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.3);
         }
 
-        #chat-flow { flex: 1; overflow-y: auto; padding: 30px; scroll-behavior: smooth; }
+        #chat-flow { flex: 1; overflow-y: auto; padding: 20px; scroll-behavior: smooth; }
 
-        .bubble { max-width: 80%; margin-bottom: 20px; padding: 18px; border-radius: 20px; line-height: 1.6; animation: fadeInUp 0.4s ease forwards; }
-        .ai-bubble { background: var(--card-bg); border-left: 5px solid var(--primary); }
-        .user-bubble { margin-left: auto; background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid rgba(255,255,255,0.1); }
+        .bubble { max-width: 85%; margin-bottom: 15px; padding: 15px; border-radius: 18px; line-height: 1.5; animation: fadeInUp 0.4s ease forwards; font-size: 15px; }
+        .ai-bubble { background: var(--card-bg); border-left: 4px solid var(--primary); border-bottom-left-radius: 2px; }
+        .user-bubble { margin-left: auto; background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid rgba(255,255,255,0.1); border-bottom-right-radius: 2px; }
 
-        .emr-card { background: rgba(0, 242, 254, 0.05); border: 1px solid var(--primary); border-radius: 15px; padding: 20px; margin-top: 15px; }
-        .emr-card h3 { color: var(--primary); font-size: 18px; margin-bottom: 10px; border-bottom: 1px solid rgba(0, 242, 254, 0.2); padding-bottom: 5px; }
+        .emr-card { background: rgba(0, 242, 254, 0.05); border: 1px solid var(--primary); border-radius: 15px; padding: 15px; margin-top: 10px; }
+        .emr-card h3 { color: var(--primary); font-size: 16px; margin-bottom: 8px; border-bottom: 1px solid rgba(0, 242, 254, 0.2); padding-bottom: 5px; }
         
-        .doc-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; margin-top: 10px; border-left: 3px solid var(--secondary); }
-        .book-btn { background: var(--secondary); color: white; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-size: 12px; margin-top: 8px; }
+        .doc-item { background: rgba(255,255,255,0.03); padding: 12px; border-radius: 12px; margin-top: 10px; border-left: 3px solid var(--secondary); }
+        .book-btn { background: var(--secondary); color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-size: 13px; margin-top: 8px; width: 100%; }
 
-        .input-area { padding: 30px 40px; background: rgba(0,0,0,0.2); }
-        .input-wrap { background: rgba(255,255,255,0.05); border-radius: 15px; display: flex; padding: 5px 15px; border: 1px solid rgba(255,255,255,0.1); align-items: center; }
+        .input-area { padding: 15px 20px 25px 20px; background: rgba(0,0,0,0.2); }
+        .input-wrap { background: rgba(255,255,255,0.08); border-radius: 15px; display: flex; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.1); align-items: center; }
         input { flex: 1; background: transparent; border: none; color: white; padding: 12px; font-size: 16px; outline: none; }
-        .mic-btn { color: var(--primary); margin-right: 15px; cursor: pointer; font-size: 20px; }
+        .mic-btn { color: var(--primary); margin-right: 10px; cursor: pointer; font-size: 22px; }
         .send-btn { background: var(--primary); color: #000; width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; }
 
         @keyframes fadeIn { from { opacity: 0; } }
         @keyframes slideIn { from { transform: translateX(50px); opacity: 0; } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Mobile Specific Adjustments */
+        @media (max-width: 600px) {
+            .options-grid { grid-template-columns: 1fr; }
+            .bubble { max-width: 90%; }
+            .chat-header { padding: 10px 15px; }
+            .welcome-text h1 { margin-top: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -80,17 +106,17 @@
         </div>
         <div class="options-grid">
             <div class="option-card" onclick="openChat('report')">
-                <div style="font-size:40px;">🤒</div>
+                <div style="font-size:35px;">🤒</div>
                 <h3>Report Symptoms</h3>
                 <p>AI-driven diagnosis & EMR generation</p>
             </div>
             <div class="option-card" onclick="openChat('doctor')">
-                <div style="font-size:40px;">👨‍⚕️</div>
+                <div style="font-size:35px;">👨‍⚕️</div>
                 <h3>Find Doctor</h3>
                 <p>Nearby specialist & appointment booking</p>
             </div>
             <div class="option-card" onclick="openChat('medicine')">
-                <div style="font-size:40px;">💊</div>
+                <div style="font-size:35px;">💊</div>
                 <h3>Verify Medicine</h3>
                 <p>AI Accuracy check & Price analysis</p>
             </div>
@@ -100,10 +126,10 @@
     <div id="chat-interface">
         <div class="chat-header">
             <div>
-                <span id="mode-badge" style="background: var(--primary); color: #000; padding: 5px 12px; border-radius: 8px; font-size: 12px; font-weight: 800; margin-right: 15px;">AI ASSISTANT</span>
-                <span style="font-weight: 600;">Health-AI Hub</span>
+                <span id="mode-badge" style="background: var(--primary); color: #000; padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; margin-right: 10px;">AI ASSISTANT</span>
+                <span style="font-weight: 600; font-size: 14px;">Health-AI Hub</span>
             </div>
-            <button class="back-btn" onclick="goBack()" style="background:transparent; border:1px solid #444; color:#fff; padding:5px 15px; border-radius:8px; cursor:pointer;">Home</button>
+            <button class="back-btn" onclick="goBack()" style="background:transparent; border:1px solid #444; color:#fff; padding:5px 12px; border-radius:8px; cursor:pointer; font-size: 13px;">Home</button>
         </div>
 
         <div id="chat-flow"></div>
@@ -111,7 +137,7 @@
         <div class="input-area">
             <div class="input-wrap">
                 <span class="mic-btn" onclick="alert('Voice recognition enabled')">🎤</span>
-                <input type="text" id="userInput" placeholder="Type or use voice in your language..." onkeypress="if(event.key==='Enter') startSearch()">
+                <input type="text" id="userInput" placeholder="Type or use voice..." onkeypress="if(event.key==='Enter') startSearch()">
                 <div class="send-btn" onclick="startSearch()">➤</div>
             </div>
             <p style="font-size:10px; color:#666; text-align:center; margin-top:10px;">SECURE & ENCRYPTED DATA CHANNEL</p>
@@ -121,22 +147,14 @@
 <script>
     let currentMode = '';
     
-    // Extended Indian Medicine Database 
     const medicineInventory = {
         "dolo 650": { name: "Dolo 650", salt: "Paracetamol", accuracy: "99% Verified", price: "₹2 (Jan Aushadhi) vs ₹30 (Branded)" },
         "crocin": { name: "Crocin", salt: "Paracetamol", accuracy: "98% Verified", price: "₹1.5 vs ₹20" },
         "pan-40": { name: "Pan-40", salt: "Pantoprazole", accuracy: "97% Verified", price: "₹15 (Generic) vs ₹120 (Branded)" },
         "pantop 40": { name: "Pantop 40", salt: "Pantoprazole", accuracy: "97% Verified", price: "₹15 vs ₹120" },
         "cetirizine": { name: "Cetirizine", salt: "Antihistamine", accuracy: "99% Verified", price: "₹2 vs ₹18" },
-        "okacet": { name: "Okacet", salt: "Cetirizine", accuracy: "99% Verified", price: "₹2 vs ₹18" },
         "digene": { name: "Digene", salt: "Antacid", accuracy: "96% Verified", price: "₹50 (Syrup)" },
-        "saridon": { name: "Saridon", salt: "Propyphenazone/Caffeine", accuracy: "98% Verified", price: "₹40" },
-        "avomine": { name: "Avomine", salt: "Promethazine", accuracy: "97% Verified", price: "₹45" },
-        "combiflam": { name: "Combiflam", salt: "Ibuprofen/Paracetamol", accuracy: "99% Verified", price: "₹4 vs ₹35" },
-        "zinetac": { name: "Zinetac", salt: "Ranitidine", accuracy: "95% Verified", price: "₹2 vs ₹15" },
-        "amoxicillin": { name: "Amoxicillin", salt: "Antibiotic", accuracy: "Re-check needed", price: "₹45" },
-        "limcee": { name: "Limcee", salt: "Vitamin C", accuracy: "100% Verified", price: "₹25" },
-        "vicks action 500": { name: "Vicks Action 500", salt: "Multi-action", accuracy: "98% Verified", price: "₹45" }
+        "combiflam": { name: "Combiflam", salt: "Ibuprofen/Paracetamol", accuracy: "99% Verified", price: "₹4 vs ₹35" }
     };
 
     const medicalDB = {
@@ -154,15 +172,12 @@
 
     function getBestMatch(input, database) {
         if (database[input]) return database[input];
-        
-        let bestMatch = null;
         for (let key in database) {
             if (key.includes(input.substring(0, 3)) || input.includes(key.substring(0, 3))) {
-                bestMatch = database[key];
-                break; 
+                return database[key];
             }
         }
-        return bestMatch;
+        return null;
     }
 
     function openChat(mode) {
@@ -172,8 +187,8 @@
         document.getElementById('mode-badge').innerText = mode.toUpperCase();
         
         let intro = "";
-        if(mode === 'report') intro = "नमस्ते। कृपया अपने लक्षण बताएं (Multilingual).";
-        else if(mode === 'doctor') intro = "पास के डॉक्टरों की सूची और अपॉइंटमेंट के लिए बीमारी बताएं।";
+        if(mode === 'report') intro = "नमस्ते। कृपया अपने लक्षण बताएं।";
+        else if(mode === 'doctor') intro = "पास के डॉक्टरों की सूची के लिए अपनी बीमारी बताएं।";
         else intro = "दवाई का नाम लिखें, AI उसकी शुद्धता और कीमत चेक करेगा।";
         
         addMsg('ai', intro);
@@ -201,7 +216,7 @@
                             <h3>📄 EMR GENERATED</h3>
                             <p><b>Analysis:</b> ${data.diag}</p>
                             <p><b>Precautions:</b> ${data.prec}</p>
-                            <p><b>EMR ID:</b> <span style="color:var(--accent)">${data.emr}</span> (Encrypted)</p>
+                            <p><b>EMR ID:</b> <span style="color:var(--accent)">${data.emr}</span></p>
                         </div>
                         <p style="margin-top:10px;">डेटा सुरक्षित रूप से आपके डॉक्टर के साथ साझा कर दिया गया है।</p>
                     `;
