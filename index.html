@@ -76,23 +76,23 @@
         <div class="team-badge">TEAM ID: SH3 | ALPHA CODER</div>
         <div class="welcome-text">
             <h1>Smart Health Assistant</h1>
-            <p style="color: #94a3b8;">Multilingual AI-Driven Healthcare Ecosystem [cite: 8, 28]</p>
+            <p style="color: #94a3b8;">Multilingual AI-Driven Healthcare Ecosystem</p>
         </div>
         <div class="options-grid">
             <div class="option-card" onclick="openChat('report')">
                 <div style="font-size:40px;">🤒</div>
                 <h3>Report Symptoms</h3>
-                <p>AI-driven diagnosis & EMR generation [cite: 12, 15]</p>
+                <p>AI-driven diagnosis & EMR generation</p>
             </div>
             <div class="option-card" onclick="openChat('doctor')">
                 <div style="font-size:40px;">👨‍⚕️</div>
                 <h3>Find Doctor</h3>
-                <p>Nearby specialist & appointment booking [cite: 14]</p>
+                <p>Nearby specialist & appointment booking</p>
             </div>
             <div class="option-card" onclick="openChat('medicine')">
                 <div style="font-size:40px;">💊</div>
                 <h3>Verify Medicine</h3>
-                <p>AI Accuracy check & Price analysis </p>
+                <p>AI Accuracy check & Price analysis</p>
             </div>
         </div>
     </div>
@@ -110,11 +110,11 @@
 
         <div class="input-area">
             <div class="input-wrap">
-                <span class="mic-btn" onclick="alert('Voice recognition enabled [cite: 54, 71]')">🎤</span>
+                <span class="mic-btn" onclick="alert('Voice recognition enabled')">🎤</span>
                 <input type="text" id="userInput" placeholder="Type or use voice in your language..." onkeypress="if(event.key==='Enter') startSearch()">
                 <div class="send-btn" onclick="startSearch()">➤</div>
             </div>
-            <p style="font-size:10px; color:#666; text-align:center; margin-top:10px;">SECURE & ENCRYPTED DATA CHANNEL [cite: 17, 38]</p>
+            <p style="font-size:10px; color:#666; text-align:center; margin-top:10px;">SECURE & ENCRYPTED DATA CHANNEL</p>
         </div>
     </div>
 
@@ -141,7 +141,7 @@
 
     const medicalDB = {
         "report": { 
-            "fever": { diag: "Viral Infection suspected [cite: 16]", prec: "Hydration, Rest, Monitor Temp", emr: "EMR-7729-SH3" },
+            "fever": { diag: "Viral Infection suspected", prec: "Hydration, Rest, Monitor Temp", emr: "EMR-7729-SH3" },
             "cough": { diag: "Respiratory irritation", prec: "Warm fluids, Steam", emr: "EMR-8841-SH3" },
             "gas": { diag: "Acid Reflux suspected", prec: "Avoid spicy food, Drink water", emr: "EMR-1122-SH3" }
         },
@@ -152,16 +152,11 @@
         ]
     };
 
-    // Smart Spell Check Function (Levenstein-like simple check)
     function getBestMatch(input, database) {
         if (database[input]) return database[input];
         
         let bestMatch = null;
-        let highestSimilarity = 0;
-
         for (let key in database) {
-            let similarity = 0;
-            // Simple logic: check how many characters overlap at the start or length
             if (key.includes(input.substring(0, 3)) || input.includes(key.substring(0, 3))) {
                 bestMatch = database[key];
                 break; 
@@ -177,9 +172,9 @@
         document.getElementById('mode-badge').innerText = mode.toUpperCase();
         
         let intro = "";
-        if(mode === 'report') intro = "नमस्ते। कृपया अपने लक्षण बताएं (Multilingual [cite: 54, 71]).";
-        else if(mode === 'doctor') intro = "पास के डॉक्टरों की सूची और अपॉइंटमेंट के लिए बीमारी बताएं[cite: 14].";
-        else intro = "दवाई का नाम लिखें, AI उसकी शुद्धता और कीमत चेक करेगा.";
+        if(mode === 'report') intro = "नमस्ते। कृपया अपने लक्षण बताएं (Multilingual).";
+        else if(mode === 'doctor') intro = "पास के डॉक्टरों की सूची और अपॉइंटमेंट के लिए बीमारी बताएं।";
+        else intro = "दवाई का नाम लिखें, AI उसकी शुद्धता और कीमत चेक करेगा।";
         
         addMsg('ai', intro);
     }
@@ -203,21 +198,21 @@
                 if(data) {
                     response = `
                         <div class="emr-card">
-                            <h3>📄 EMR GENERATED [cite: 15]</h3>
+                            <h3>📄 EMR GENERATED</h3>
                             <p><b>Analysis:</b> ${data.diag}</p>
                             <p><b>Precautions:</b> ${data.prec}</p>
-                            <p><b>EMR ID:</b> <span style="color:var(--accent)">${data.emr}</span> (Encrypted [cite: 17])</p>
+                            <p><b>EMR ID:</b> <span style="color:var(--accent)">${data.emr}</span> (Encrypted)</p>
                         </div>
-                        <p style="margin-top:10px;">डेटा सुरक्षित रूप से आपके डॉक्टर के साथ साझा कर दिया गया है [cite: 15]।</p>
+                        <p style="margin-top:10px;">डेटा सुरक्षित रूप से आपके डॉक्टर के साथ साझा कर दिया गया है।</p>
                     `;
                 }
             } else if(currentMode === 'doctor') {
-                response = "<b>आपके पास के डॉक्टर[cite: 14]:</b>";
+                response = "<b>आपके पास के डॉक्टर:</b>";
                 medicalDB.doctor.forEach(d => {
                     response += `<div class="doc-item">
                         <b>${d.name}</b> (${d.spec})<br>
                         📍 ${d.loc} | <span style="color:var(--accent)">${d.status}</span><br>
-                        <button class="book-btn" onclick="alert('Booking appointment[cite: 14]...')">Book Appointment</button>
+                        <button class="book-btn" onclick="alert('Booking appointment...')">Book Appointment</button>
                     </div>`;
                 });
             } else if(currentMode === 'medicine') {
@@ -225,7 +220,7 @@
                 if(med) {
                     response = `
                         <div class="emr-card" style="border-color:var(--accent)">
-                            <h3>💊 AI VERIFICATION [cite: 18]</h3>
+                            <h3>💊 AI VERIFICATION</h3>
                             <p><b>Medicine Name:</b> ${med.name}</p>
                             <p><b>Salt:</b> ${med.salt}</p>
                             <p><b>Accuracy:</b> <span style="color:var(--accent)">${med.accuracy}</span></p>
@@ -235,7 +230,7 @@
                 }
             }
 
-            if(!response) response = "क्षमा करें, हमारे डेटाबेस में यह जानकारी नहीं है। कृपया सही स्पेलिंग आज़माएँ।";
+            if(!response) response = "क्षमा करें, हमारे डेटाबेस में यह जानकारी नहीं है। कृपया सही स्पेलिंग आज़माएँ।";
             addMsg('ai', response);
         }, 800);
     }
